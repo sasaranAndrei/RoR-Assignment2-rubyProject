@@ -8,34 +8,6 @@ INPUT_FILE = "/data1.in"
 INPUT_FOLDER = "../input"
 INPUT = INPUT_FOLDER + INPUT_FILE
 
-def test
-  #data = DateTime.now
-  data = DateTime.new(2021,4,19,0,2)
-  myData = DateTime.parse("2021-04-19T08:03:00+00:00")
-  
-  string = "19/04/2021_00:01"
-
-  parseData = DateTime.parse(string)
-
-  data1 = data.strftime(TimeTable::DATE_TIME_FORMAT)
-  data2 = parseData.strftime(TimeTable::DATE_TIME_FORMAT)
-
-  time1 = DateTime.new(1,1,1,8,3).strftime(TimeTable::TIME_FORMAT)
-  time2 = DateTime.parse("1/1/1_17:02").strftime(TimeTable::TIME_FORMAT)
-
-  puts data1
-  puts data2
-  puts time1
-  puts time2
-
-end
-
-def test1
-  # tt = TimeTable.new
-  date = TimeTable::DEFAULT_DATE
-  puts date
-end 
-
 def create_stations(station_count, process_hours)
   stations = []
   station_count.times {
@@ -61,29 +33,68 @@ def read_input
   
   cleaning_service = CleaningService.new()
   cleaning_service.stations = create_stations(station_count, process_hours)
-  cleaning_service.cars = read_cars(file, car_count)
+  cleaning_service.queue = read_cars(file, car_count)
 
   file.close
   return cleaning_service
 end
 
-def main
-  #test1
-  # test
+def go
   cleaning_service = read_input
   puts cleaning_service
-  
-  #cleaning_service.work
-  time_table = cleaning_service.time_table
+  puts "Work:"
+  cleaning_service.work
+end
 
-  puts data = cleaning_service.cars[0].schedule_date
-  time1 =  data.strftime(TimeTable::TIME_FORMAT)
+def main
 
-  time_start = time_table.start_program[:Monday].strftime(TimeTable::TIME_FORMAT)
-  time_end = time_table.end_program[:Monday].strftime(TimeTable::TIME_FORMAT)
+  # go
   
-  puts time_start, time_end
-  puts time_start < time_end
+  # testing stuff...
+
+  tt = TimeTable.new
+  date = DateTime.parse("14-04-2021_07:00")
+  # date_plus = date 
+  puts date.strftime(TimeTable::DATE_TIME_FORMAT)
+  puts "Out of program: " + tt.out_of_program(date).to_s
+  puts "Next work date: " + tt.find_next_work_date(date).strftime(TimeTable::DATE_TIME_FORMAT) if tt.out_of_program(date)
+
+
+  # schedule = Hash.new
+  # cleaning_service = read_input
+
+  # car1 = cleaning_service.queue[0]
+  # car2 = cleaning_service.queue[3]
+
+  # data1 = car1.schedule_date
+  # data2 = car2.schedule_date
+
+  # schedule[data2] = car2
+  # schedule[data1] = car1
+
+  # schedule.each {|key, val| puts key.strftime(TimeTable::DATE_TIME_FORMAT), val}
+
+  # schedule = schedule.sort_by { |key| key }.to_h
+
+  # schedule.each {|key, val| puts key.strftime(TimeTable::DATE_TIME_FORMAT), val}
+
+
+
+  # list = [1, 2, 3]
+  # print list
+  # puts
+
+  # list.append(4)
+  # print list
+  # puts
+
+  # list.delete(1)
+  # list.delete(2)
+  # list.delete(3)
+  # list.delete(4)
+  # print "hopa" if list.nil?
+  # print list
+  # puts
 
 end
 
