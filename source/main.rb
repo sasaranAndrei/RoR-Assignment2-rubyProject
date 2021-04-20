@@ -73,8 +73,17 @@ def main
   cleaning_service = read_input
   puts cleaning_service
   
-  # time_table = create_basic_time_table()
+  #cleaning_service.work
+  time_table = cleaning_service.time_table
 
+  puts data = cleaning_service.cars[0].schedule_date
+  time1 =  data.strftime(TimeTable::TIME_FORMAT)
+
+  time_start = time_table.start_program[:Monday].strftime(TimeTable::TIME_FORMAT)
+  time_end = time_table.end_program[:Monday].strftime(TimeTable::TIME_FORMAT)
+  
+  puts time_start, time_end
+  puts time_start < time_end
 
 end
 
