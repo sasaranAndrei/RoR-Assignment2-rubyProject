@@ -2,10 +2,16 @@ require 'date'
 require 'time'
 class TimeTable
   DATE_TIME_FORMAT = "%d/%m/%Y_%H:%M"
+  DATE_FORMAT = "%d/%m/%Y"
   TIME_FORMAT = "%H:%M"  
   DAY_OF_WEEK_FORMAT = "%A"
+
+  
   MINUTE = 60
+  HOUR = 60 * 60 # 3600
+
   DEFAULT_DATE = Time.parse("19-04-2021")
+  # TODO REFACTOR -> ONLY TIME NO DATE
   DEFAULT_START_PROGRAM = {
     :Monday => Time.parse("1-1-1_08:00"),
     :Tuesday => Time.parse("1-1-1_08:00"),
@@ -22,7 +28,6 @@ class TimeTable
   }
 
   attr_accessor :start_program, :end_program
-
 
   def initialize()
     @start_program = DEFAULT_START_PROGRAM
@@ -77,7 +82,22 @@ class TimeTable
     return new_date
   end
 
-  
-
+  def date_start_program(date)
+    day_of_week = find_day_of_week(date)
+    hour_string = start_program[day_of_week].strftime(TimeTable::TIME_FORMAT)
+    date_string = date.strftime(TimeTable::DATE_FORMAT)
     
+    start_date = Time.parse(date_string + "_" + hour_string)
+    return start_date
+  end
+  
+  def date_end_program(date)
+    day_of_week = find_day_of_week(date)
+    hour_string = end_program[day_of_week].strftime(TimeTable::TIME_FORMAT)
+    date_string = date.strftime(TimeTable::DATE_FORMAT)
+    
+    end_date = Time.parse(date_string + "_" + hour_string)
+    return end_date
+  end
+  
 end
