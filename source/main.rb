@@ -3,6 +3,7 @@ require_relative 'station'
 require_relative 'car'
 require_relative 'time_table'
 require 'date'
+require 'time'
 
 INPUT_FILE = "/data1.in"
 INPUT_FOLDER = "../input"
@@ -41,19 +42,35 @@ end
 
 def go
   cleaning_service = read_input
+  #puts "what" if cleaning_service.stations[0].nil?
   puts cleaning_service
   puts "Work:"
   cleaning_service.work
+
 end
 
 def main
 
   # go
-  
+
   # testing stuff...
 
   tt = TimeTable.new
-  date = DateTime.parse("14-04-2021_07:00")
+  date = Time.parse("16-04-2021_17:00")
+  # # time = date.strftime(TimeTable::TIME_FORMAT)
+  # # puts time
+  # time = Time.parse("14-04-2021_09:00")
+
+  # finish = time + 2 * 60 * 60
+  # puts date.strftime(TimeTable::DATE_TIME_FORMAT)
+  # puts finish.strftime(TimeTable::DATE_TIME_FORMAT)
+
+  # puts date.class
+  # puts finish.class
+
+  # puts (time_obj + 2 * 60 * 60).strftime(TimeTable::DATE_TIME_FORMAT)
+  
+  
   # date_plus = date 
   puts date.strftime(TimeTable::DATE_TIME_FORMAT)
   puts "Out of program: " + tt.out_of_program(date).to_s

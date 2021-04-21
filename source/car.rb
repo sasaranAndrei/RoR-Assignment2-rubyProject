@@ -1,4 +1,5 @@
 require 'date'
+require 'time'
 require_relative 'time_table'
 class Car
   attr_accessor :schedule_date, :preferred_pick_up_date, :car_id
@@ -11,9 +12,9 @@ class Car
     # todo validate!
     @car_id = @@car_count
     @@car_count += 1
-    @schedule_date = DateTime.parse(schedule_date)
-    @preferred_pick_up_date = preferred_pick_up_date.nil? ? @schedule_date : DateTime.parse(preferred_pick_up_date)
-    #@preferred_pick_up_date = preferred_pick_up_date.nil? ? nil : DateTime.parse(preferred_pick_up_date)
+    @schedule_date = Time.parse(schedule_date)
+    @preferred_pick_up_date = preferred_pick_up_date.nil? ? @schedule_date : Time.parse(preferred_pick_up_date)
+    #@preferred_pick_up_date = preferred_pick_up_date.nil? ? nil : Time.parse(preferred_pick_up_date)
   end
 
   def to_s
