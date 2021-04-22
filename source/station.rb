@@ -1,14 +1,22 @@
 require_relative 'time_table'
 
 class Station
+  INVALID_INPUT_MESSAGE = "\nInvalid Station Input!\nPlease provide a nonzero positive number that represents number of process hours.\n\n"
+  
   attr_accessor :process_hours, :schedule, :station_id
   @@station_count = 0 
 
   def initialize(process_hours)
+    raise if invalid_input(process_hours)
+    
     @station_id = @@station_count
     @@station_count += 1
     @process_hours = process_hours
     @schedule = Hash.new
+  end
+
+  def invalid_input(process_hours)
+    process_hours <= 0
   end
 
   def to_s
@@ -70,7 +78,9 @@ class Station
         
         return final_process
       end
+
     end
+
   end
 
   def final_schedule_from_day(time_table, date_start, start_array)

@@ -1,12 +1,20 @@
 require_relative 'time_table'
 
 class CleaningService
+  INVALID_INPUT_MESSAGE = "\nInvalid Cleaning Service Input!\nPlease provide valid input for Stations and Cars\n\n"
+
   attr_accessor :time_table, :stations, :queue
 
-  def initialize
-    @stations = nil
-    @queue = nil
+  def initialize(stations, queue)
+    raise if invalid_input(stations, queue)
+    
+    @stations = stations
+    @queue = queue
     @time_table = TimeTable.new
+  end
+
+  def invalid_input(stations, queue)
+    stations.nil? || queue.nil?
   end
 
   def to_s
@@ -31,14 +39,14 @@ class CleaningService
 
   def work
     until queue.empty?
-      schedule(queue.first)
-    end
+      schedule(queue.first) unless stations.empty?
+      queue.delete_at(0)
+    end 
   end
   
   def schedule(car)
     assigned_station, empty_spot = find_empty_spot(car)
     stations[assigned_station].schedule[empty_spot] = car
-    queue.delete_at(0)
   end
 
   def find_empty_spot(car)
