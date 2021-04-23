@@ -7,7 +7,7 @@ class Station
   @@station_count = 0 
 
   def initialize(process_hours)
-    raise if invalid_input(process_hours)
+    raise INVALID_INPUT_MESSAGE if invalid_input(process_hours)
     
     @station_id = @@station_count
     @@station_count += 1

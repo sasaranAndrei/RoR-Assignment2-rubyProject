@@ -9,7 +9,7 @@ class Car
   @@car_count = 0 
 
   def initialize(schedule_date, preferred_pick_up_date=nil)
-    raise if invalid_input(schedule_date, preferred_pick_up_date)
+    raise INVALID_INPUT_MESSAGE if invalid_input(schedule_date, preferred_pick_up_date)
     
     @car_id = @@car_count
     @@car_count += 1

@@ -6,7 +6,7 @@ require 'date'
 require 'time'
 
 INPUT_FILE = "/data1.in"
-INPUT_FOLDER = "../input"
+INPUT_FOLDER = "input"
 INPUT = INPUT_FOLDER + INPUT_FILE
 
 def try_create_station(process_hours)
@@ -82,15 +82,8 @@ def go
   puts cleaning_service.info
 end
 
-def main
+def main2
   go
-  
-  date_string1 = "safasf"
-  date_string2 = "19-04-2021_16:23"
-
-  #station = Car.new(date_string1, date_string2)
-  
-  # puts station
 end
 
-main
+main2
