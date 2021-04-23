@@ -2,10 +2,10 @@ require 'main'
 
 describe 'read_input' do
   
-  let!(:car1) {Car.new("19-04-2021_08:10")}
-  let!(:car2) {Car.new("19-04-2021_08:23", "20-04-2021_09:10")}
-  let!(:file_cars) {File.open("input/test_cars.in", "r")}
-  let!(:station) {Station.new(2)}
+  let(:car1) { Car.new("19-04-2021_08:10") }
+  let(:car2) { Car.new("19-04-2021_08:23", "20-04-2021_09:10") }
+  let(:file_cars) { File.open("input/test_cars.in", "r") }
+  let(:station) { Station.new(2) }
 
   it 'reads cars from file' do
     expected_array = [car1, car2, nil, nil]

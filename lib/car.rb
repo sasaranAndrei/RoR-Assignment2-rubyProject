@@ -13,7 +13,7 @@ class Car
     
     @car_id = @@car_count
     @@car_count += 1
-    @schedule_date = Time.parse(schedule_date) # should I use Time.strptime(schedule_date, TimeTable::DATE_TIME_FORMAT) ?
+    @schedule_date = Time.parse(schedule_date)
     @preferred_pick_up_date = preferred_pick_up_date.nil? ? @schedule_date : Time.parse(preferred_pick_up_date)
   end
 

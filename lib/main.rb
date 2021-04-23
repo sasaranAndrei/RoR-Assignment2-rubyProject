@@ -82,8 +82,4 @@ def go
   puts cleaning_service.info
 end
 
-def main2
-  go
-end
-
-main2
+go

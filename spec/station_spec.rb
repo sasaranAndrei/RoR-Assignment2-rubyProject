@@ -1,15 +1,16 @@
 require 'station'
+require 'car'
 
 describe 'station' do
 
-  let!(:station) {Station.new(2)}
-  let!(:car) {Car.new("19-04-2021_18:10")}
-  let!(:car1) {Car.new("19-04-2021_08:10")}
-  let!(:car2) {Car.new("19-04-2021_08:25")}
-  let!(:time_table) {TimeTable.new}
-  let!(:date_monday) {Time.parse("19-04-2021_18:10")}
-  let!(:date_tuesday) {Time.parse("20-04-2021_07:45")}
-  let!(:date_friday) {Time.parse("23-04-2021_18:10")}
+  let(:station) { Station.new(2) }
+  let(:car) { Car.new("19-04-2021_18:10") }
+  let(:car1) { Car.new("19-04-2021_08:10") }
+  let(:car2) { Car.new("19-04-2021_08:25") }
+  let(:time_table) { TimeTable.new }
+  let(:date_monday) { Time.parse("19-04-2021_18:10") }
+  let(:date_tuesday) { Time.parse("20-04-2021_07:45") }
+  let(:date_friday) { Time.parse("23-04-2021_18:10") }
 
   it 'computes end of processing time for a car' do
     expect_date = Time.parse("19-04-2021_20:10")

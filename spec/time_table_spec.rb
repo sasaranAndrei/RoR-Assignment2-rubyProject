@@ -2,10 +2,10 @@ require 'time_table'
 
 describe 'time_table' do
   
-  let!(:time_table) {TimeTable.new}
-  let!(:date_monday) {Time.parse("19-04-2021_18:10")}
-  let!(:date_tuesday) {Time.parse("20-04-2021_07:45")}
-  let!(:date_friday) {Time.parse("23-04-2021_18:10")}
+  let(:time_table) { TimeTable.new }
+  let(:date_monday) { Time.parse("19-04-2021_18:10") }
+  let(:date_tuesday) { Time.parse("20-04-2021_07:45") }
+  let(:date_friday) { Time.parse("23-04-2021_18:10") }
 
   it 'finds day of week' do
     expect_monday = time_table.find_day_of_week(date_monday)
